@@ -40,14 +40,16 @@
                       yum update -y
                       yum install python3 -y
                       pip3 install flask
-                      wget -P templates 
-                      wget -P templates
-                      wget app.py
+                      cd
+                      wget -P templates https://raw.githubusercontent.com/MarkMaddison/AWS/master/001-roman-numerals-converter/templates/index.html
+                      wget -P templates https://raw.githubusercontent.com/MarkMaddison/AWS/master/001-roman-numerals-converter/templates/result.html
+                      wget https://raw.githubusercontent.com/MarkMaddison/AWS/master/001-roman-numerals-converter/app.py
+                      python3 app.py
   Outputs:
       WebsiteURL:
           Description: Roman Numerals Converter Application Website URL
           Value: !Sub
               - http://${PublicAddress}
-              - PublicAddress: !Getatt MyWebServer.PublicDnsName
+              - PublicAddress: !GetAtt MyWebServer.PublicDnsName
 
   
