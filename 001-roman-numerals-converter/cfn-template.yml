@@ -5,6 +5,11 @@
       This is cloudformation template for roman numerals application.
       This flask web application runs on EC2 allows connection from anywhere
       on port 80
+  Parameters:
+    KeyPairName:
+        Description: Enter the name of your Key Pair for SSH connections.
+        Type: AWS::EC2::KeyPair::KeyName
+        ConstraintDescription: Must one of the existing EC2 KeyPair
 
   Resources:
       MySecurityGroup:
@@ -27,6 +32,7 @@
           Properties:
               ImageId: ami-08f3d892de259504d
               InstanceType: t2.micro
+              KeyName: !Ref KeyPairName
               SecurityGroupIds:
                   - !Ref MySecurityGroup
               Tags:
