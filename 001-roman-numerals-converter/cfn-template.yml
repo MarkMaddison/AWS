@@ -57,5 +57,3 @@
           Value: !Sub
               - http://${PublicAddress}
               - PublicAddress: !GetAtt MyWebServer.PublicDnsName
-
-  
